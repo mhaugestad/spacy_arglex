@@ -31,71 +31,84 @@ class Conditionals(object):
             # it would be ([\w]+[ \,]+){0,2}nice if
             [{'LOWER': 'it'},
              {'LOWER': 'would'},
-             {'LEMMA': 'be'}],
+             {'LEMMA': 'be'},
+             {'IS_ALPHA': True, 'OP':'?'},
+             {'IS_ALPHA': True, 'OP': '?'},
+             {'LOWER': 'nice'},
+             {'LOWER': 'if'}],
 
             # wouldn\'t it be ([\w]+[ \,]+){0,2}nice if
-            [{'DEP': 'poss'},
-             {'LOWER': 'take'},
-             {'LOWER': 'on'}],
+            [{'LOWER': 'would'},
+             {'LOWER': 'it'},
+             {'LOWER': 'not'},
+             {'LEMMA': 'be'},
+             {'IS_ALPHA': True, 'OP':'?'},
+             {'IS_ALPHA': True, 'OP': '?'},
+             {'LOWER': 'nice'},
+             {'LOWER': 'if'}],
 
             # if ([\w]+[ \,]+){3,8} that would be ([\w]+[ \,]+){0,2}nice
-            [{'LOWER': 'it'},
-             {'LEMMA': 'seem'},
-             {'LOWER': 'to'},
-             {'POS': 'PRON'},
-             {'LOWER': 'that', 'OP':'?'}],
+            [{'LOWER': 'if'},
+             {'IS_ALPHA': True, 'OP':'+'}
+             {'LOWER': 'that'},
+             {'LOWER': 'would'},
+             {'LOWER': 'be'},
+             {'IS_ALPHA': True, 'OP':'?'},
+             {'IS_ALPHA': True, 'OP':'?'},
+             {'LOWER': 'nice'}],
 
             # (cannot|will not|won\'t|can\'t) ([\w]+[ \,]+){1,7}(if|unless)
-            [{'LOWER': 'it'},
-             {'LEMMA': 'seem'},
-             {'LOWER': 'that', 'OP':'?'}],
+            [{'LOWER': {'IN':['can', 'will']}},
+             {'LOWER': 'not'},
+             {'IS_ALPHA': True, 'OP':'+'},
+             {'LOWER': {'IN':['if', 'unless']}}],
 
             # (if|unless) ([\w]+[ \,]+){3,10}(cannot|will not|won\'t|can\'t)
-            [{'LOWER': 'it'},
-             {'LOWER': 'would'},
-             {'LOWER': 'seem'},
-             {'LOWER': 'to'},
-             {'POS': 'PRON', 'OP':'?'}],
+            [{'LOWER': {'IN':['if', 'unless']}},
+             {'IS_ALPHA': True, 'OP':'+'},
+             {'LOWER': {'IN':['can', 'will']},
+             {'LOWER': 'not'}],
 
             # (need|needs|must|has to|have to) ([\w]+[ \,]+){3,10}(in order )to
-            [{'LOWER': 'it'},
-             {'LOWER': 'would'},
-             {'LOWER': 'appear'},
-             {'LOWER': 'to'},
-             {'POS': 'PRON', 'OP':'?'}],
+            [{'LEMMA': {'IN':['need', 'must', 'have']}},
+             {'LOWER': 'to', 'OP':'?'},
+             {'IS_ALPHA': True, 'OP':'+'},
+             {'LOWER': 'in'},
+             {'LOWER': 'order'},
+             {'LOWER': 'to'}]
 
             # (in order )?to ([\w]+[ \,]+){3,10}(need|needs|must|has to|have to)
-            [{'LOWER': 'it'},
-             {'LEMMA': 'appear'},
+            [{'LOWER': 'in'},
+             {'LOWER': 'order'},
              {'LOWER': 'to'},
-             {'POS': 'PRON', 'OP':'?'}],
+             {'IS_ALPHA': True, 'OP':'+'},
+             {'LEMMA': {'IN':['need', 'must','have']}},
+             {'LOWER': 'to'}],
 
             # as long as (we|you) ([\w]+[ \,]+){3,10}(will|can|able|should|[a-zA-Z]+\'ll)
-            [{'DEP': {'IN':['poss', 'det']}},
-             {'IS_ALPHA': True, 'OP':'?'},
-             {'LOWER': 'point'},
-             {'LEMMA': 'be'},
-             {'LOWER': 'that', 'OP':'?'}],
+            [{'LOWER': 'as'},
+             {'LOWER': 'long'},
+             {'LOWER': 'as'},
+             {'DEP': 'poss'},
+             {'IS_ALPHA': True, 'OP':'+'},
+             {'LEMMA': {'IN':['will', 'can', 'able', 'should']}}],
 
             # ([a-zA-Z]\'ll|will|can|able|should) ([\w]+[ \,]+){3,10}as long as (we|you) 
-            [{'LOWER': 'it'},
-             {'LEMMA': 'look'},
-             {'LOWER': 'to'},
-             {'POS':'PRON'},
-             {'LOWER': 'like'}],
+            [{'LEMMA': {'IN':['will', 'can', 'able', 'should']}},
+             {'IS_ALPHA': True, 'OP':'+'},
+             {'LOWER': 'as'},
+             {'LOWER': 'long'},
+             {'LOWER': 'as'},
+             {'DEP': 'poss'}],
 
             #(you|he|we) better ([\w]+[ \,]+){3,10}or
             [{'POS': 'PRON'},
-             {'LEMMA': {'IN':['have', 'get']}},
-             {'LOWER': 'the'},
-             {'LOWER':'impression'},
-             {'LOWER': 'that', 'OP':'?'}],
+             {'LOWER': 'better'},
+             {'IS_ALPHA': True, 'OP':'+'},
+             {'LOWER':'or'}],
 
             # otherwise
-            [{'DEP': 'poss'},
-             {'LOWER':'impression'},
-             {'LEMMA': 'be'},
-             {'LOWER': 'that'}]
+            [{'LOWER': 'otherwise'}]
         )
     
     def __call__(self, doc):

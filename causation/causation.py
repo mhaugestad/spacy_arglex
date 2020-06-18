@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-class Authority(object):
+class Causation(object):
 
     def __init__(self, object):
         self.matcher = PhraseMatcher(object.vocab, attr="LOWER")

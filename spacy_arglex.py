@@ -1,36 +1,40 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-class spacy_arglex(object):
+from assessment.assesment import Assessment
+from authority.authority import Authority
+from causation.causation import Causation
+from conditionals.conditionals import Conditionals
+from contrast.contrast import Contrast
+from difficulty.difficulty import Difficulty
+from doubt.doubt import Doubt
+from emphasis.emphasis import Emphasis
+from generalization.generalization import Generalization
+from inconsistency.inconsistency import Inconsistency
+
+
+def arglex(object):
+    nlp = object.load('en_core_web_sm')
     
-    def __init__(self, object):
-        self.nlp = object.load("en_core_web_sm")
-        
-        # Set Document Extensions
-        object.tokens.Doc.set_extension("opinion", default = [], force = True)
-        
-        # Set Span extensions
-        object.tokens.Span.set_extension("assessment", default = None, force = True)
-        
-        # Set Token Extensions
-        object.tokens.Token.set_extension("is_emo", getter = lambda token: token.lemma_
-                            in ('like', 'adore', 'want', 'prefer', 'love', 'enjoy',
-                               'adoration', 'want', 'preference', 'love', 'enjoyment',
-                               'hate', 'dislike', 'disprefer', 'dispreference'), force = True)
+    # Set Document Extensions
+    object.tokens.Doc.set_extension("opinion", default = [], force = True)
 
-        object.tokens.Token.set_extension("is_intensifier", getter = lambda token: token.lemma_
-                            in ('absolutely', 'absurdly', 'resoundingly', 'amazingly', 
-                                'awfully', 'extremely', 'completely', 'highly', 'incredibly', 
-                                'perfectly', 'quite', 'really', 'strikingly', 'surprisingly', 
-                                'terribly', 'totally', 'unbelievably', 'hugely', 'unnaturally', 
-                                'unusually', 'utterly', 'very', 'tremendously', 'spectacularly',
-                                'absolute', 'extreme', 'incredible', 'perfect', 'phenomenal', 
-                                'spectacular', 'huge', 'major', 'tremendous', 'complete', 'considerable',
-                                'real', 'terrible', 'total', 'unbelievable', 'utter', 'great', 'resounding'
-                                ), force = True)
+    # Set Span Extensions
+    object.tokens.Span.set_extension("assessment", default = None, force = True)
+    object.tokens.Span.set_extension("authority", default = None, force = True)
+    object.tokens.Span.set_extension("causation", default = None, force = True)
+    object.tokens.Span.set_extension("conditionals", default = None, force = True)
 
-        object.tokens.Token.set_extension("is_spoken", getter = lambda token: token.lemma_
-                            in ('uh,um', 'mm-hmm', 'uh-huh', 'huh'), force = True)
-        
-        opinion_tag = Assessment(self.nlp)
-        self.nlp.add_pipe(op_tag, last = True)
+
+    # Set Token Extensions
+
+
+    # Add to pipe
+    nlp.add_pipe(Assessment(nlp), name = 'Assessment', last = True)
+    nlp.add_pipe(Authority(nlp), name = 'Authority', last = True)
+    nlp.add_pipe(Causation(nlp), name = 'Causation', last = True)
+    nlp.add_pipe(Conditionals(nlp), name = 'Conditionals', last = True)
+    nlp.add_pipe(Contrast(nlp), name = 'Contrast', last = True)
+    nlp.add_pipe(Difficulty(nlp), name = 'Difficulty', last = True)
+    
+    return nlp
