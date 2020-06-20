@@ -3,9 +3,9 @@
 
 class Conditionals(object):
     
-    def __init__(self, object):
+    def __init__(self, nlp, object):
         
-        self.matcher = Matcher(object.vocab)
+        self.matcher = object.matcher.Matcher(nlp.vocab)
         self.matcher.add("Conditionals", None,
             
             # if (we|you) want to ([\w]+[ \,]+){1,7}(we|you) (need to|must|have to)
@@ -14,17 +14,17 @@ class Conditionals(object):
             {'LOWER': 'want'},
             {'LOWER': 'to'},
             {'IS_ALPHA': True, 'OP':'+'},
-            {'LOWER', {'IN':['we', 'you']}},
-            {'LOWER': {'IN':['need', 'must', 'have'}],
+            {'LOWER': {'IN':['we', 'you']}},
+            {'LOWER': {'IN':['need', 'must', 'have']}}],
 
             #(we|you) ([\w ,]+) (must|have to|need to) ([\w]+[ \,]+){1,7}if  (you|we) want to                    
             [{'LOWER':{'IN':['we', 'you']}},
             {'IS_ALPHA': True, 'OP':'+'},
-            {'LOWER': {'IN':['need', 'must', 'have'}},
+            {'LOWER': {'IN':['need', 'must', 'have']}},
             {'LOWER': 'to', 'OP':'?'},
             {'IS_ALPHA': True, 'OP':'+'},
             {'LOWER': 'if'},
-            {'LOWER':{'IN':['we', 'you']}}
+            {'LOWER':{'IN':['we', 'you']}},
             {'LOWER' : 'want'},
             {'LOWER': 'to'}],
 
@@ -49,7 +49,7 @@ class Conditionals(object):
 
             # if ([\w]+[ \,]+){3,8} that would be ([\w]+[ \,]+){0,2}nice
             [{'LOWER': 'if'},
-             {'IS_ALPHA': True, 'OP':'+'}
+             {'IS_ALPHA': True, 'OP':'+'},
              {'LOWER': 'that'},
              {'LOWER': 'would'},
              {'LOWER': 'be'},
@@ -66,7 +66,7 @@ class Conditionals(object):
             # (if|unless) ([\w]+[ \,]+){3,10}(cannot|will not|won\'t|can\'t)
             [{'LOWER': {'IN':['if', 'unless']}},
              {'IS_ALPHA': True, 'OP':'+'},
-             {'LOWER': {'IN':['can', 'will']},
+             {'LOWER': {'IN':['can', 'will']}},
              {'LOWER': 'not'}],
 
             # (need|needs|must|has to|have to) ([\w]+[ \,]+){3,10}(in order )to
@@ -75,7 +75,7 @@ class Conditionals(object):
              {'IS_ALPHA': True, 'OP':'+'},
              {'LOWER': 'in'},
              {'LOWER': 'order'},
-             {'LOWER': 'to'}]
+             {'LOWER': 'to'}],
 
             # (in order )?to ([\w]+[ \,]+){3,10}(need|needs|must|has to|have to)
             [{'LOWER': 'in'},
@@ -117,6 +117,6 @@ class Conditionals(object):
         for match_id, start, end in matches:
             sents = Span(doc, start, end).sent
             sent_start, sent_end = sents.start, sents.end
-            opinion = Span(doc, sent_start, sent_end, label = "COND")
+            opinion = Span(doc, sent_start, sent_end, label = "CONDITIONALS")
             doc._.opinion.append(opinion,)
         return doc

@@ -3,9 +3,9 @@
 
 class Priority(object):
     
-    def __init__(self, object):
+    def __init__(self, nlp, object):
         
-        self.matcher = Matcher(object.vocab)
+        self.matcher = object.matcher.Matcher(nlp.vocab)
         self.matcher.add("Priority", None,
 
         #important

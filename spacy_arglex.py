@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from assessment.assesment import Assessment
+from assessment.assessment import Assessment
 from authority.authority import Authority
 from causation.causation import Causation
 from conditionals.conditionals import Conditionals
@@ -11,6 +11,7 @@ from doubt.doubt import Doubt
 from emphasis.emphasis import Emphasis
 from generalization.generalization import Generalization
 from inconsistency.inconsistency import Inconsistency
+from intensifiers.intensifiers import Intensifiers
 from inyourshoes.inyourshoes import Inyourshoes
 from necessity.necessity import Necessity
 from possibility.possibility import Possibility
@@ -49,25 +50,26 @@ def arglex(object):
     # Set Token Extensions
     Spoken(object)
     Wordclasses(object)
+    Intensifiers(object)
     
-    # Add to pipeline
-    nlp.add_pipe(Assessment(nlp), name = 'Assessment', last = True)
-    nlp.add_pipe(Authority(nlp), name = 'Authority', last = True)
-    nlp.add_pipe(Causation(nlp), name = 'Causation', last = True)
-    nlp.add_pipe(Conditionals(nlp), name = 'Conditionals', last = True)
-    nlp.add_pipe(Contrast(nlp), name = 'Contrast', last = True)
-    nlp.add_pipe(Difficulty(nlp), name = 'Difficulty', last = True)
-    nlp.add_pipe(Doubt(nlp), name = 'Doubt', last = True)
-    nlp.add_pipe(Emphasis(nlp), name = 'Emphasis', last = True)
-    nlp.add_pipe(Generalization(nlp), name = 'Generalization', last = True)
-    nlp.add_pipe(Inconsistency(nlp), name = 'Inconsistency', last = True)
-    nlp.add_pipe(Inyourshoes(nlp), name = 'Inyourshoes', last = True)
-    nlp.add_pipe(Necessity(nlp), name = 'Necessity', last = True)
-    nlp.add_pipe(Possibility(nlp), name = 'Possibility', last = True)
-    nlp.add_pipe(Priority(nlp), name = 'Priority', last = True)
-    nlp.add_pipe(RhetoricalQuestion(nlp), name = 'RhetoricalQuestion', last = True)
-    nlp.add_pipe(Structure(nlp), name = 'Structure', last = True)
-    nlp.add_pipe(Wants(nlp), name = 'Wants', last = True)
+    # Add to pipeline 
+    nlp.add_pipe(Assessment(nlp, object), name = 'Assessment', last = True)
+    nlp.add_pipe(Authority(nlp, object), name = 'Authority', last = True)
+    nlp.add_pipe(Causation(nlp, object), name = 'Causation', last = True)
+    nlp.add_pipe(Conditionals(nlp, object), name = 'Conditionals', last = True)
+    nlp.add_pipe(Contrast(nlp, object), name = 'Contrast', last = True)
+    nlp.add_pipe(Difficulty(nlp, object), name = 'Difficulty', last = True)
+    nlp.add_pipe(Doubt(nlp, object), name = 'Doubt', last = True)
+    nlp.add_pipe(Emphasis(nlp, object), name = 'Emphasis', last = True)
+    nlp.add_pipe(Generalization(nlp, object), name = 'Generalization', last = True)
+    nlp.add_pipe(Inconsistency(nlp, object), name = 'Inconsistency', last = True)
+    nlp.add_pipe(Inyourshoes(nlp, object), name = 'Inyourshoes', last = True)
+    nlp.add_pipe(Necessity(nlp, object), name = 'Necessity', last = True)
+    nlp.add_pipe(Possibility(nlp, object), name = 'Possibility', last = True)
+    nlp.add_pipe(Priority(nlp, object), name = 'Priority', last = True)
+    nlp.add_pipe(RhetoricalQuestion(nlp, object), name = 'RhetoricalQuestion', last = True)
+    nlp.add_pipe(Structure(nlp, object), name = 'Structure', last = True)
+    nlp.add_pipe(Wants(nlp, object), name = 'Wants', last = True)
     return nlp
 
 def load(file):

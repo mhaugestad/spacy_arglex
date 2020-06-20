@@ -3,18 +3,18 @@
 
 class Contrast(object):
     
-    def __init__(self, object):
+    def __init__(self, nlp, object):
         
-        self.matcher = Matcher(object.vocab)
+        self.matcher = object.matcher.Matcher(nlp.vocab)
         self.matcher.add("Contrast", None,
             
             # really, actually
-            [{'LOWER':{'IN':['really', 'actually']}],
+            [{'LOWER':{'IN':['really', 'actually']}}],
 
             #as opposed to
             [{'LOWER': 'as'},
              {'LOWER': 'oppsed'},
-              'LOWER': 'to'}],
+             {'LOWER': 'to'}],
 
             #instead of
             [{'LOWER': 'instead'},
@@ -54,8 +54,8 @@ class Contrast(object):
             #(is|that\'s|it\'s) a (separate|different) (issue|question)
             [{'LEMMA': 'be'},
              {'LOWER': 'a'},
-             {'LOWER': {'IN': ['separate', 'different']},
-             {'LOWER': {'IN': ['issue', 'question']}
+             {'LOWER': {'IN': ['separate', 'different']}},
+             {'LOWER': {'IN': ['issue', 'question']}}
               ]
           
         )

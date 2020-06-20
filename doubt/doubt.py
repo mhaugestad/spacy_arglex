@@ -3,10 +3,10 @@
 
 class Doubt(object):
     
-    def __init__(self, object):
+    def __init__(self, nlp, object):
         
-        self.matcher = Matcher(object.vocab)
-        self.matcher.add("Assessment", None,
+        self.matcher = object.matcher.Matcher(nlp.vocab)
+        self.matcher.add("Doubt", None,
                         
             #(i am|i\'m) not (sure|convinced)
             [{'POS':'PRON'},

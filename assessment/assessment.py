@@ -3,9 +3,9 @@
 
 class Assessment(object):
     
-    def __init__(self, object):
+    def __init__(self, nlp, object):
         
-        self.matcher = Matcher(object.vocab)
+        self.matcher = object.matcher.Matcher(nlp.vocab)
         self.matcher.add("Assessment", None,
             
             # (our|my) (opinion|understanding) (is|was) that
@@ -188,6 +188,6 @@ class Assessment(object):
         for match_id, start, end in matches:
             sents = Span(doc, start, end).sent
             sent_start, sent_end = sents.start, sents.end
-            opinion = Span(doc, sent_start, sent_end, label = "ASS")
+            opinion = Span(doc, sent_start, sent_end, label = "ASSESSMENT")
             doc._.opinion.append(opinion,)
         return doc

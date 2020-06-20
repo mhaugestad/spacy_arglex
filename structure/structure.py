@@ -3,8 +3,8 @@
 
 class Structure(object):
 
-    def __init__(self, object):
-        self.matcher = PhraseMatcher(object.vocab, attr="LOWER")
+    def __init__(self, nlp, object):
+        self.matcher = object.matcher.PhraseMatcher(nlp.vocab, attr="LOWER")
         terms = ['first', 'secondly', 'first place', 'in the first place', 'first of all']
         patterns = [nlp.make_doc(text) for text in terms]
         self.matcher.add("Structure", None, *patterns)

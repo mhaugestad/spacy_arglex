@@ -3,9 +3,9 @@
 
 class Generalization(object):
     
-    def __init__(self, object):
+    def __init__(self, nlp, object):
         
-        self.matcher = Matcher(object.vocab)
+        self.matcher = object.matcher.Matcher(nlp.vocab)
         self.matcher.add("Generalization", None,
                     
         #(everybody|everything|anybody|anything|nobody|nothing) (else|at all)

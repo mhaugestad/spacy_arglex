@@ -3,12 +3,11 @@
 
 class RhetoricalQuestion(object):
     
-    def __init__(self, object):
+    def __init__(self, nlp, object):
         
-        self.matcher = Matcher(object.vocab)
+        self.matcher = object.matcher.Matcher(nlp.vocab)
         self.matcher.add("RhetoricalQuestion", None,
-
-                         
+            
         #do (we|you) (actually|really|still) (need|want)
         [{'LEMMA': 'do'},
          {'POS': 'PRON'},

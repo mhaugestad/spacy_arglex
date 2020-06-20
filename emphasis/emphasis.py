@@ -3,9 +3,9 @@
 
 class Emphasis(object):
     
-    def __init__(self, object):
+    def __init__(self, nlp, object):
         
-        self.matcher = Matcher(object.vocab)
+        self.matcher = object.matcher.Matcher(nlp.vocab)
         self.matcher.add("Emphasis", None,
                     
             #clearly
@@ -44,14 +44,14 @@ class Emphasis(object):
             #i\'ve got to say
             [{'POS':'PRON'},
              {'LEMMA': 'have'},
-             {'LOWER': 'got'}
+             {'LOWER': 'got'},
              {'LOWER': 'to'},
              {'LOWER': 'say'}],
                          
             #i\'ve gotta say
             [{'POS':'PRON'},
              {'LEMMA': 'have'},
-             {'LOWER': 'gotta'}
+             {'LOWER': 'gotta'},
              {'LOWER': 'say'}],
                          
             #i should say
@@ -180,7 +180,7 @@ class Emphasis(object):
             [{'LOWER':'exactly'}],
                          
             #precisely
-            [{'LOWER':'precisely'}]
+            [{'LOWER':'precisely'}],
                          
             #(@GONNA)
                          
@@ -194,7 +194,7 @@ class Emphasis(object):
             [{'LOWER':'what'},
              {'LOWER': 'will'},
              {'LOWER': 'happen'},
-             {'LOWER': 'is'}]
+             {'LOWER': 'is'}],
                          
             #what\'ll happen is
                          
@@ -204,7 +204,7 @@ class Emphasis(object):
              {'LOWER': {'IN':['gonna', 'going']}},
              {'LOWER': 'to', 'OP': '?'},
              {'LOWER': 'happen'},
-             {'LOWER': 'is'}]
+             {'LOWER': 'is'}],
                                          
             #what is ((gonna)|(going to)) happen is
                          
@@ -212,7 +212,7 @@ class Emphasis(object):
             [{'POS':'PRON'},
              {'LEMMA': 'want'},
              {'LOWER': 'to'},
-             {'LOWER': {'IN':['highlight', 'emphasize', 'underscore']}}],
+             {'LOWER': {'IN':['highlight', 'emphasize', 'underscore']}}]
         )
     
     def __call__(self, doc):
