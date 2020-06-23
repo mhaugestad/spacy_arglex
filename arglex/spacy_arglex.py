@@ -22,27 +22,6 @@
 #from wants.wants import Wants
 #from wordclasses.wordclasses import Wordclasses
 
-import Assessment
-import Authority
-import Causation
-import Conditionals
-import Contrast
-import Difficulty
-import Doubt
-import Emphasis
-import Generalization
-import Inconsistency
-import Intensifiers
-import Inyourshoes
-import Necessity
-import Possibility
-import Priority
-import RhetoricalQuestion
-import Spoken
-import Structure
-import Wants
-import Wordclasses
-
 def arglex(object):
     nlp = object.load('en_core_web_sm')
     
