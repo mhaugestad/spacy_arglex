@@ -22,26 +22,26 @@
 #from wants.wants import Wants
 #from wordclasses.wordclasses import Wordclasses
 
-from arglex.assessment import Assessment
-from arglex import Authority
-from arglex import Causation
-from arglex import Conditionals
-from arglex import Contrast
-from arglex import Difficulty
-from arglex import Doubt
-from arglex import Emphasis
-from arglex import Generalization
-from arglex import Inconsistency
-from arglex import Intensifiers
-from arglex import Inyourshoes
-from arglex import Necessity
-from arglex import Possibility
-from arglex import Priority
-from arglex import RhetoricalQuestion
-from arglex import Spoken
-from arglex import Structure
-from arglex import Wants
-from arglex import Wordclasses
+import Assessment
+import Authority
+import Causation
+import Conditionals
+import Contrast
+import Difficulty
+import Doubt
+import Emphasis
+import Generalization
+import Inconsistency
+import Intensifiers
+import Inyourshoes
+import Necessity
+import Possibility
+import Priority
+import RhetoricalQuestion
+import Spoken
+import Structure
+import Wants
+import Wordclasses
 
 def arglex(object):
     nlp = object.load('en_core_web_sm')
