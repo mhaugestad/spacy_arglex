@@ -1,0 +1,8 @@
+README.md
+setup.py
+arglex/__init__.py
+arglex/spacy_arglex.py
+spacy_arglex.egg-info/PKG-INFO
+spacy_arglex.egg-info/SOURCES.txt
+spacy_arglex.egg-info/dependency_links.txt
+spacy_arglex.egg-info/top_level.txt
