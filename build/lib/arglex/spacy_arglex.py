@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-#from spacy.tokens import Span,Doc, Token
 from assessment.assessment import Assessment
 from authority.authority import Authority
 from causation.causation import Causation
@@ -73,6 +72,6 @@ def arglex(object):
     nlp.add_pipe(Wants(nlp, object), name = 'Wants', last = True)
     return nlp
 
-def load_testfile(file='patterntest.txt'):
+def load_testfile(file='patterntest.json'):
     with open(file, 'rb') as f:
         return f.read().split('\n')
