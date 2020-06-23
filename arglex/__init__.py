@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from .spacy_arglex import arglex
 from .assessment.assessment import Assessment
 from .authority.authority import Authority
 from .causation.causation import Causation
