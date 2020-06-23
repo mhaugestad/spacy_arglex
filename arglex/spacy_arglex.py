@@ -22,7 +22,7 @@
 #from wants.wants import Wants
 #from wordclasses.wordclasses import Wordclasses
 
-from arglex import Assessment
+from arglex.assessment import Assessment
 from arglex import Authority
 from arglex import Causation
 from arglex import Conditionals
