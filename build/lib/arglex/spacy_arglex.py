@@ -1,26 +1,47 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from assessment.assessment import Assessment
-from authority.authority import Authority
-from causation.causation import Causation
-from conditionals.conditionals import Conditionals
-from contrast.contrast import Contrast
-from difficulty.difficulty import Difficulty
-from doubt.doubt import Doubt
-from emphasis.emphasis import Emphasis
-from generalization.generalization import Generalization
-from inconsistency.inconsistency import Inconsistency
-from intensifiers.intensifiers import Intensifiers
-from inyourshoes.inyourshoes import Inyourshoes
-from necessity.necessity import Necessity
-from possibility.possibility import Possibility
-from priority.priority import Priority
-from rhetoricalquestion.rhetoricalquestion import RhetoricalQuestion
-from spoken.spoken import Spoken
-from structure.structure import Structure
-from wants.wants import Wants
-from wordclasses.wordclasses import Wordclasses
+#from assessment.assessment import Assessment
+#from authority.authority import Authority
+#from causation.causation import Causation
+#from conditionals.conditionals import Conditionals
+#from contrast.contrast import Contrast
+#from difficulty.difficulty import Difficulty
+#from doubt.doubt import Doubt
+#from emphasis.emphasis import Emphasis
+#from generalization.generalization import Generalization
+#from inconsistency.inconsistency import Inconsistency
+#from intensifiers.intensifiers import Intensifiers
+#from inyourshoes.inyourshoes import Inyourshoes
+#from necessity.necessity import Necessity
+#from possibility.possibility import Possibility
+#from priority.priority import Priority
+#from rhetoricalquestion.rhetoricalquestion import RhetoricalQuestion
+#from spoken.spoken import Spoken
+#from structure.structure import Structure
+#from wants.wants import Wants
+#from wordclasses.wordclasses import Wordclasses
+
+from arglex import Assessment
+from arglex import Authority
+from arglex import Causation
+from arglex import Conditionals
+from arglex import Contrast
+from arglex import Difficulty
+from arglex import Doubt
+from arglex import Emphasis
+from arglex import Generalization
+from arglex import Inconsistency
+from arglex import Intensifiers
+from arglex import Inyourshoes
+from arglex import Necessity
+from arglex import Possibility
+from arglex import Priority
+from arglex import RhetoricalQuestion
+from arglex import Spoken
+from arglex import Structure
+from arglex import Wants
+from arglex import Wordclasses
 
 def arglex(object):
     nlp = object.load('en_core_web_sm')
