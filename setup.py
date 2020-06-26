@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import setuptools
+import os
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -21,9 +22,8 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-install_requires=[
-    'spacy',
-    'en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.0.0/en_core_web_sm-2.0.0.tar.gz',
-],
+install_requires=['spacy'],
     python_requires='>=3.6',
 )
+
+os.system('python -m spacy download en')
