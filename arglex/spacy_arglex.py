@@ -75,6 +75,5 @@ def arglex(object):
     return nlp
 
 def load_testfile(file='.arglex/testfiles/patterntest.json'):
-    print(os.getcwd())
-    #with open(file, 'rb') as f:
- #       return json.load(f)
+    with open(file, 'rb') as f:
+        return json.load(f)
