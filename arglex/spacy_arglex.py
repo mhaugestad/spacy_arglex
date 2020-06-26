@@ -74,6 +74,6 @@ def arglex(object):
     nlp.add_pipe(Wants(nlp, object), name = 'Wants', last = True)
     return nlp
 
-def load_testfile(file='.arglex/testfiles/patterntest.json'):
+def load_testfile(file='./arglex/testfiles/patterntest.json'):
     with open(file, 'rb') as f:
         return json.load(f)
