@@ -22,7 +22,6 @@ from .structure.structure import Structure
 from .wants.wants import Wants
 from .wordclasses.wordclasses import Wordclasses
 import json
-import os
 
 def arglex(object):
     nlp = object.load('en_core_web_sm')
@@ -74,6 +73,6 @@ def arglex(object):
     nlp.add_pipe(Wants(nlp, object), name = 'Wants', last = True)
     return nlp
 
-def load_testfile(file='./arglex/testfiles/patterntest.json'):
+def load_testfile(file='./testfiles/patterntest.json'):
     with open(file, 'rb') as f:
         return json.load(f)
