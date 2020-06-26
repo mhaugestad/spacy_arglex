@@ -25,5 +25,3 @@ setuptools.setup(
 install_requires=['spacy'],
     python_requires='>=3.6',
 )
-
-os.system('python -m spacy download en')
