@@ -10,7 +10,11 @@ class Generalization(object):
                     
         #(everybody|everything|anybody|anything|nobody|nothing) (else|at all)
         [{'LOWER': {'IN':['everybody', 'everything', 'anybody', 'anything', 'nobody', 'nothing']}},
-         {'LOWER': {'IN':['else', 'at']}}],
+         {'LOWER': 'else'}],
+                         
+        [{'LOWER': {'IN':['everybody', 'everything', 'anybody', 'anything', 'nobody', 'nothing']}},
+         {'LOWER': 'at'},
+         {'LOWER': 'all'}],
                          
         #in the (world|universe)
         [{'LOWER': 'in'},

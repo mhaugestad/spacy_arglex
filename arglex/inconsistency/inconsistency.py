@@ -60,8 +60,10 @@ class Inconsistency(object):
         {'LOWER': 'the'},
         {'LOWER': 'same'},
         {'LOWER': 'time'}],
-                         
+        
+        
         # still
+            # how to disambiguate? 'He was still looking there' - 'Still, there is no reason to suspect otherwise'.
         [{'LOWER': 'still'}],
                          
         # wait a minute
@@ -82,8 +84,8 @@ class Inconsistency(object):
          {'LOWER': 'sec'}],                   
                          
         # it\'s just that
-        [{'LOWER': 'it'},
-         {'LOWER': 'is'},
+        [{'LEMMA': 'it'},
+         {'LEMMA': 'be'},
          {'LOWER': 'just'},
          {'LOWER': 'that'}],                 
                          

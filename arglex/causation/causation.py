@@ -3,6 +3,8 @@
 
 class Causation(object):
 
+    # What to do with 'so'. Needs to specify so it matches 'So what I am trying to say...', but not, 'this is so awesome!'.
+    
     def __init__(self, nlp, object):
         self.object = object
         self.matcher = object.matcher.PhraseMatcher(nlp.vocab, attr="LOWER")

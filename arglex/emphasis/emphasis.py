@@ -67,7 +67,7 @@ class Emphasis(object):
                          
             #(@BE) ((sure)|(certain)|(confident)) (that)?
             [{'LEMMA':'be'},
-             {'LOWER': 'sure'}],   
+             {'LOWER': {'IN'['sure', 'certain', 'confident']}}],   
                          
             #of course
             [{'LOWER':'of'},
@@ -120,7 +120,7 @@ class Emphasis(object):
              {'LOWER': 'it'}], 
                          
             #((the)|(one)) ((thing)|(issue)|(question)|(problem)) (@MODAL )?(@BE) (that)?
-            [{'LOWER':{'IN':['one', 'the']}},
+            [{'LOWER':{'IN':['the', 'one']}},
              {'LOWER': {'IN': ['thing', 'issue', 'question', 'problem']}},
              {'LEMMA': {'IN': ['will', 'shall', 'can', 'could', 'would', 'may', 'might', 'be', 'must', 'dare']}, 'OP':'?'},
              {'LEMMA': 'be'}], 
@@ -140,12 +140,11 @@ class Emphasis(object):
             #the idea (here )?is (that)?
             [{'LOWER':'the'},
              {'LOWER': 'idea'},
-             {'LOWER': 'here'},
+             {'LOWER': 'here', 'OP':'?'},
              {'LEMMA': 'be'}],
                          
             #((my)|(the)) whole ((point)|(question)) is 
-            [#{'IN':[{'DEP':'poss'}, {'LOWER': 'the'}]},
-             {'LOWER': 'whole'},
+            [{'LOWER': 'whole'},
              {'LOWER': {'IN':['point', 'question']}},
              {'LEMMA': 'be'}],    
             
@@ -168,20 +167,12 @@ class Emphasis(object):
              {'LEMMA': 'what'}],
                          
             #here is what
-                         
+               # Covered above          
             #exactly
             [{'LOWER':'exactly'}],
                          
             #precisely
             [{'LOWER':'precisely'}],
-                         
-            #(@GONNA)
-                         
-            #(@GONNANEG)
-                         
-            #(@GONNANEGCL)
-                         
-            #(@GONNACL)
                          
             #what will happen is
             [{'LOWER':'what'},
@@ -190,17 +181,19 @@ class Emphasis(object):
              {'LOWER': 'is'}],
                          
             #what\'ll happen is
-                         
+                   # Covered above
+            
             #what\'s ((gonna)|(going to)) happen is
             [{'LOWER':'what'},
              {'LOWER': 'is'},
-             {'LOWER': {'IN':['gonna', 'going']}},
-             {'LOWER': 'to', 'OP': '?'},
+             {'LEMMA': 'going'},
+             {'LOWER': 'to'},
              {'LOWER': 'happen'},
              {'LOWER': 'is'}],
                                          
             #what is ((gonna)|(going to)) happen is
-                         
+                         # Covered above
+    
             #i want to (highlight|emphasize|underscore)
             [{'POS':'PRON'},
              {'LEMMA': 'want'},

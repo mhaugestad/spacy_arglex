@@ -43,7 +43,7 @@ class Contrast(object):
 
             #(is|are|that\'s|it\'s) (very|quite|completely|totally )?different
             [{'LEMMA': 'be'},
-             {'LOWER': {'IN':['very', 'quite', 'completely', 'totally']}},
+             {'LOWER': {'IN':['very', 'quite', 'completely', 'totally']}, 'OP':'?'},
              {'LOWER': 'different'}],
 
             #whole new ballgame

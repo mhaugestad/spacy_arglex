@@ -71,11 +71,20 @@ class Assessment(object):
              {'POS':'PRON'},
              {'LOWER': 'like'}],
 
-                         # Need to build in 'as if '
-
             #it (looks|looked) (as if|like|that way)
-
-                        # how to build in bigrams; as if, that way
+            [{'LOWER': 'it'},
+             {'LEMMA': 'look'},
+             {'LOWER': 'as'},
+             {'LOWER':'if'}],
+            
+            [{'LOWER': 'it'},
+             {'LEMMA': 'look'},
+             {'LOWER': 'like'}],
+            
+            [{'LOWER': 'it'},
+             {'LEMMA': 'look'},
+             {'LOWER': 'that'},
+             {'LOWER': 'way'}],
 
             #(we|i) (have|get|got) the impression (that)?
             [{'POS': 'PRON'},
@@ -86,8 +95,7 @@ class Assessment(object):
             #(our|my) impression (was|is) (that)?
             [{'DEP': 'poss'},
              {'LOWER':'impression'},
-             {'LEMMA': 'be'},
-             {'LOWER': 'that'}],
+             {'LEMMA': 'be'}],
 
             #in (our|my) book
             [{'LOWER': 'in'},
@@ -123,13 +131,14 @@ class Assessment(object):
             #(our|my) feeling (is|was|would be)
             [{'DEP': 'poss'},
              {'LOWER': 'feeling'},
-             {'LEMMA': 'be'}],
+             {'LEMMA': {'IN':['be', 'would']}}],
                         
             #from where (I\'m|I am) (standing|sitting)
             [{'LOWER': 'from'},
              {'LOWER': 'where'},
              {'POS': 'PRON'},
-             {'LEMMA': 'be'}],
+             {'LEMMA': 'be'},
+             {'LOWER': {'IN':['standing', 'sitting']}}],
                          
             #(we|I) (don\'t)? think (that)?
             [{'POS': 'PRON'},
@@ -155,7 +164,7 @@ class Assessment(object):
             #(we\'re|I\'m) (not)? saying that
             [{'POS': 'PRON'},
              {'LEMMA': 'be'},
-             {'LOWER': 'not'},
+             {'LOWER': 'not', 'OP':'?'},
              {'LEMMA': 'say'},
              {'LOWER': 'that'}],
             
@@ -171,8 +180,7 @@ class Assessment(object):
             [{'LOWER': 'what'},
              {'POS': 'PRON'},
              {'LOWER': 'mean'},
-             {'LEMMA': 'be'},
-             {'LOWER': 'that'}],            
+             {'LEMMA': 'be'}],            
         )
     
     def __call__(self, doc):

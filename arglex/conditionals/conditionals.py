@@ -10,12 +10,12 @@ class Conditionals(object):
             
             # if (we|you) want to ([\w]+[ \,]+){1,7}(we|you) (need to|must|have to)
             [{'LOWER':'if'},
-            {"LOWER": {'IN':['we', 'you']}}, 
-            {'LOWER': 'want'},
+            {"POS": 'PRON'}, 
+            {'LEMMA': 'want'},
             {'LOWER': 'to'},
             {'IS_ALPHA': True, 'OP':'+'},
-            {'LOWER': {'IN':['we', 'you']}},
-            {'LOWER': {'IN':['need', 'must', 'have']}}],
+            {'POS': 'PRON'},
+            {'LEMMA': {'IN':['need', 'must', 'have']}}],
 
             #(we|you) ([\w ,]+) (must|have to|need to) ([\w]+[ \,]+){1,7}if  (you|we) want to                    
             [{'LOWER':{'IN':['we', 'you']}},
