@@ -21,6 +21,7 @@ from .spoken.spoken import Spoken
 from .structure.structure import Structure
 from .wants.wants import Wants
 from .wordclasses.wordclasses import Wordclasses
+import json
 
 def arglex(object):
     nlp = object.load('en_core_web_sm')
@@ -74,4 +75,4 @@ def arglex(object):
 
 def load_testfile(file='patterntest.json'):
     with open(file, 'rb') as f:
-        return f.read().split('\n')
+        return json.load(f)

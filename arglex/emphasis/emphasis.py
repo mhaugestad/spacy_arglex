@@ -67,7 +67,7 @@ class Emphasis(object):
                          
             #(@BE) ((sure)|(certain)|(confident)) (that)?
             [{'LEMMA':'be'},
-             {'LOWER': {'IN'['sure', 'certain', 'confident']}}],   
+             {'LOWER': {'IN':['sure', 'certain', 'confident']}}], 
                          
             #of course
             [{'LOWER':'of'},
