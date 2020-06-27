@@ -38,6 +38,7 @@ arglex/spoken/__init__.py
 arglex/spoken/spoken.py
 arglex/structure/__init__.py
 arglex/structure/structure.py
+arglex/testfiles/patterntest.json
 arglex/wants/__init__.py
 arglex/wants/wants.py
 arglex/wordclasses/__init__.py

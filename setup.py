@@ -22,6 +22,8 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-install_requires=['spacy'],
+
+    package_data={'arglex': ['testfiles/patterntest.json']},
+    install_requires=['spacy'],
     python_requires='>=3.6',
 )

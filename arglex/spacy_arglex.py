@@ -73,6 +73,11 @@ def arglex(object):
     nlp.add_pipe(Wants(nlp, object), name = 'Wants', last = True)
     return nlp
 
-def load_testfile(file='./testfiles/patterntest.json'):
-    with open(file, 'rb') as f:
+def set_token_extensions(object):
+    Spoken(object)
+    Wordclasses(object)
+    Intensifiers(object)
+
+def load_test_patterns(testfile = './testfiles/patterntest.json'):
+    with open(testfile, 'rb') as f:
         return json.load(f)
