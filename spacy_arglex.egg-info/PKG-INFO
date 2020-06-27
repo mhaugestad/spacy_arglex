@@ -28,7 +28,37 @@ Description: # spacy_arglex
         
         nlp = arglex(spacy)
         
+        (It was my understanding that there would be burgers., 'ASSESSMENT')
+        (According to the WHO burgers are good for you!, 'AUTHORITY')
+        
         ```
+        The module also includes the test patterns provided by the authors which can be accessed through a simple function call. The patterns come in a json file where each key represents the type of opinion expressed, and value a text snippet examplifying this:
+        
+        ```
+        from arglex import load_test_patterns
+        test_patterns = load_test_patterns()
+        
+        for doc in nlp.pipe(test_patterns['contrast']): 
+          for opinion in doc._.opinion: 
+            print((opinion, opinion.label_))
+        
+        (uh as opposed to what you'd really want to know if you were gonna use this thing, 'CONTRAST')
+        (um i think they should be recorded instead of written, 'CONTRAST')
+        (um i think they should be recorded instead of written, 'NECESSITY')
+        (so rather than say the most interesting thing something interesting, 'CONTRAST')
+        (there's a median filtering and then there's a piece-wise linear fit based on some criteria, 'CONTRAST')
+        (i mean the language model for switchboard is totally different, 'CONTRAST')
+        (It's a whole new ballgame., 'CONTRAST')
+        
+        ```
+        Current behaviour of the module is to return a sentence twice if it matches two separate opinion types.
+        
+        The module also allows for you to pull out individual opinion type patterns and add to your nlp pipeline:
+        
+        ```
+        
+        ```
+        
         
 Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
