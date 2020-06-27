@@ -8,7 +8,8 @@ class Causation(object):
     def __init__(self, nlp, object):
         self.object = object
         self.matcher = object.matcher.PhraseMatcher(nlp.vocab, attr="LOWER")
-        terms = ['so', 'therefore', 'because', 'hence', 'as a result',
+        terms = [#'so',
+                'therefore', 'because', 'hence', 'as a result',
                  'consequently']
         patterns = [nlp.make_doc(text) for text in terms]
         self.matcher.add("Causation", None, *patterns)
