@@ -7,7 +7,7 @@ The module is built on top of spacy and tag sentences that expresses some argume
 The model requires you to have Spacy and their core language model for english already installed;
 
 ```
-# pip install spacy
+# pip install -U spacy
 # python -m spacy download en_core_web_sm
 git clone https://github.com/mhaugestad/spacy_arglex.git
 cd spacy_arglex
